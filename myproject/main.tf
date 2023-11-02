@@ -66,20 +66,8 @@ resource "aws_security_group" "ec2-sg" {
 }
 
 resource "aws_instance" "my-instance" {
-  connection {
-    type = "ssh"
-    user = "ec2-user"
-    timeout = "3m"
-    agent = false
-  }
   instance_type = "t2.micro"
   ami = "${lookup(var.amis, var.region)}"
   vpc_security_group_ids = ["${aws_security_group.ec2-sg.id}"]
   subnet_id = "${aws_subnet.my-sub.id}"
-  provisioner "remote-exec" {
-    inline = [
-      "sudo yum install nginx -y",
-      "sudo service nginx start",
-    ]
-  }
 }
