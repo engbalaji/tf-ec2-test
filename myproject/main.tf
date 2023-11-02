@@ -75,7 +75,6 @@ resource "aws_instance" "my-instance" {
   }
   instance_type = "t2.micro"
   ami = "${lookup(var.amis, var.region)}"
-  key_name = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = ["${aws_security_group.ec2-sg.id}"]
   subnet_id = "${aws_subnet.my-sub.id}"
   provisioner "remote-exec" {
