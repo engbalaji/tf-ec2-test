@@ -27,7 +27,7 @@ resource "aws_subnet" "my-sub" {
 
 resource "aws_security_group" "elb-sg" {
   name = "my-elb-sg"
-  vpc_id = "${aws_vpc.my-vpc.id}"
+  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
   ingress {
     from_port = 80
     to_port = 80
@@ -44,7 +44,7 @@ resource "aws_security_group" "elb-sg" {
 
 resource "aws_security_group" "ec2-sg" {
   name = "bm-ec2-ss-sg"
-  vpc_id = "${aws_vpc.my-vpc.id}"
+  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
   ingress {
     from_port = 22
     to_port = 22
