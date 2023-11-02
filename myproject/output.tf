@@ -1,4 +1,4 @@
 
 output "web" {
-  value = "${aws_elb.my-elb.dns_name}"
+  value = "Ec2 created for SS test"
 }
