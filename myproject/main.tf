@@ -9,10 +9,6 @@ resource "aws_vpc" "vpc-b30658d4" {
   cidr_block = "10.254.0.0/20"
 }
 
-resource "aws_internet_gateway" "my-igw" {
-  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
-}
-
 resource "aws_route" "internet-access" {
   route_table_id = "${aws_vpc.vpc-b30658d4.main_route_table_id}"
   destination_cidr_block = "0.0.0.0/0"
@@ -63,5 +59,4 @@ resource "aws_instance" "my-instance" {
   instance_type = "t2.micro"
   ami = "${lookup(var.amis, var.region)}"
   vpc_security_group_ids = ["${aws_security_group.ec2-sg.id}"]
-  subnet_id = "${aws_subnet.my-sub.id}"
 }
