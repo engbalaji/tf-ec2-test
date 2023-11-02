@@ -10,6 +10,6 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = ["sg-02cd5c886d8b07682"]  # Replace with the security group IDs
 
   tags = {
-    Name = "Instance_SS1"
+    Name = "Instance_SS2"
   }
 }
