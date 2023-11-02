@@ -69,7 +69,6 @@ resource "aws_instance" "my-instance" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = "${file("/root/my-key.pem")}"
     timeout = "3m"
     agent = false
   }
