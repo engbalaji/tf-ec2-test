@@ -14,7 +14,7 @@ resource "aws_internet_gateway" "my-igw" {
 }
 
 resource "aws_route" "internet-access" {
-  route_table_id = "${aws_vpc.my-vpc.main_route_table_id}"
+  route_table_id = "${aws_vpc.vpc-b30658d4.main_route_table_id}"
   destination_cidr_block = "0.0.0.0/0"
   gateway_id = "${aws_internet_gateway.my-igw.id}"
 }
