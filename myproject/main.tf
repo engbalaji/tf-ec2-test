@@ -5,8 +5,8 @@ provider "aws" {
   region = "${var.region}"
 }
 
-resource "aws_vpc" "my-vpc" {
-  cidr_block = "192.168.0.0/16"
+resource "aws_vpc" "vpc-b30658d4" {
+  cidr_block = "10.254.0.0/20"
 }
 
 resource "aws_internet_gateway" "my-igw" {
@@ -43,7 +43,7 @@ resource "aws_security_group" "elb-sg" {
 }
 
 resource "aws_security_group" "ec2-sg" {
-  name = "my-ec2-sg"
+  name = "bm-ec2-ss-sg"
   vpc_id = "${aws_vpc.my-vpc.id}"
   ingress {
     from_port = 22
@@ -63,32 +63,6 @@ resource "aws_security_group" "ec2-sg" {
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-resource "aws_elb" "my-elb" {
-  name = "my-web"
-  subnets = ["${aws_subnet.my-sub.id}"]
-  security_groups = ["${aws_security_group.elb-sg.id}"]
-  instances = ["${aws_instance.my-instance.id}"]
-  connection_draining = "true"
-  listener {
-    instance_port = 80
-    instance_protocol = "http"
-    lb_port = 80
-    lb_protocol = "http"
-  }
-  health_check {
-    healthy_threshold = 2
-    unhealthy_threshold = 2
-    timeout = 3
-    target = "HTTP:80/"
-    interval = 30
-  }
-}
-
-resource "aws_key_pair" "auth" {
-  key_name = "${var.key_name}"
-  public_key = "${file(var.public_key_path)}"
 }
 
 resource "aws_instance" "my-instance" {
