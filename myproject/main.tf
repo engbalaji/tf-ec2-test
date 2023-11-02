@@ -12,7 +12,6 @@ resource "aws_vpc" "vpc-b30658d4" {
 resource "aws_route" "internet-access" {
   route_table_id = "${aws_vpc.vpc-b30658d4.main_route_table_id}"
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id = "${aws_internet_gateway.my-igw.id}"
 }
 
 resource "aws_security_group" "elb-sg" {
