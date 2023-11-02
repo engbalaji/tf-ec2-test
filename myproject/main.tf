@@ -19,12 +19,6 @@ resource "aws_route" "internet-access" {
   gateway_id = "${aws_internet_gateway.my-igw.id}"
 }
 
-resource "aws_subnet" "my-sub" {
-  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
-  cidr_block = "192.168.1.0/24"
-  map_public_ip_on_launch = "true"
-}
-
 resource "aws_security_group" "elb-sg" {
   name = "my-elb-sg"
   vpc_id = "${aws_vpc.vpc-b30658d4.id}"
