@@ -10,7 +10,7 @@ resource "aws_vpc" "vpc-b30658d4" {
 }
 
 resource "aws_internet_gateway" "my-igw" {
-  vpc_id = "${aws_vpc.my-vpc.id}"
+  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
 }
 
 resource "aws_route" "internet-access" {
