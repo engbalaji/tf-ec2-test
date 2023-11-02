@@ -20,7 +20,7 @@ resource "aws_route" "internet-access" {
 }
 
 resource "aws_subnet" "my-sub" {
-  vpc_id = "${aws_vpc.my-vpc.id}"
+  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
   cidr_block = "192.168.1.0/24"
   map_public_ip_on_launch = "true"
 }
