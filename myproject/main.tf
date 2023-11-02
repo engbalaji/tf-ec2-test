@@ -1,61 +1,15 @@
-
 provider "aws" {
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
-  region = "${var.region}"
+  region = "us-east-1"  # Change to your desired AWS region
 }
 
-resource "aws_vpc" "vpc-b30658d4" {
-  cidr_block = "10.254.0.0/20"
-}
+resource "aws_instance" "example" {
+  ami           = "ami-0df435f331839b2d6"  # Replace with your desired AMI
+  instance_type = "t2.micro"              # Replace with your desired instance type
 
-resource "aws_route" "internet-access" {
-  route_table_id = "${aws_vpc.vpc-b30658d4.main_route_table_id}"
-  destination_cidr_block = "0.0.0.0/0"
-}
+  subnet_id    = "subnet-89eb03a4"      # Replace with the subnet ID in your existing VPC
+  vpc_security_group_ids = ["sg-02cd5c886d8b07682"]  # Replace with the security group IDs
 
-resource "aws_security_group" "elb-sg" {
-  name = "my-elb-sg"
-  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
-  ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Name = "Instance_SS1"
   }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_security_group" "ec2-sg" {
-  name = "bm-ec2-ss-sg"
-  vpc_id = "${aws_vpc.vpc-b30658d4.id}"
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["192.168.0.0/16"]
-  }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_instance" "my-instance" {
-  instance_type = "t2.micro"
-  ami = "${lookup(var.amis, var.region)}"
-  vpc_security_group_ids = ["${aws_security_group.ec2-sg.id}"]
 }
