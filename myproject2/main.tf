@@ -8,7 +8,7 @@ resource "aws_instance" "example1" {
 
   subnet_id    = var.subnet1_id
   vpc_security_group_ids = [var.security_group1_id]
-  key_name     = var.my-key-pair
+  key_name     = var.key-pair-id
 
   tags = {
     Name = var.instance1_name
@@ -21,7 +21,7 @@ resource "aws_instance" "example2" {
 
   subnet_id    = var.subnet2_id
   vpc_security_group_ids = [var.security_group2_id]
-  key_name     = var.my-key-pair
+  key_name     = var.key-pair-id
 
   tags = {
     Name = var.instance2_name
