@@ -22,6 +22,6 @@ variable "security_group2_id" {
 variable "instance1_name" {
   default = "pltest1"
 }
-variable "instance1_name" {
+variable "instance2_name" {
   default = "pltest2"
 }
