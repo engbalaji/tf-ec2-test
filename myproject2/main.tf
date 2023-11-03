@@ -10,7 +10,7 @@ resource "aws_instance" "example1" {
   vpc_security_group_ids = [var.security_group1_id]
 
   tags = {
-    Name = "Ec2Instance-VPCBm"
+    Name = var.instance1_name
   }
 }
 
@@ -22,6 +22,6 @@ resource "aws_instance" "example2" {
   vpc_security_group_ids = [var.security_group2_id]
 
   tags = {
-    Name = "Ec2Instance-VPCrecovery"
+    Name = var.instance2_name
   }
 }
