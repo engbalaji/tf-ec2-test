@@ -25,6 +25,6 @@ variable "instance1_name" {
 variable "instance2_name" {
   default = "pltest2"
 }
-variable "my-key-pair-id" {
+variable "my-key-pair" {
   default = "Balaji Mariyappan"
 }
