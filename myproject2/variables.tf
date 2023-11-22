@@ -5,7 +5,7 @@ variable "ami_id" {
   default = "ami-0df435f331839b2d6"
 }
 variable "instance_type" {
-  default = "t2.nano"
+  default = "t2.micro"
 }
 variable "subnet1_id" {
   default = "subnet-0f1e42859f3ad43c3"
