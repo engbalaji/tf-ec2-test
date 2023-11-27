@@ -65,7 +65,7 @@ resource "aws_subnet" "private_1" {
     Name = "private-1"
   }
 }
-
+##########################################################################
 resource "aws_subnet" "private_2" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = "10.0.4.0/24"
@@ -107,7 +107,7 @@ resource "aws_route_table" "project_rt" {
     Name = "project-rt"
   }
 }
-
+##########################################################################
 # Associate public subnets with route table
 resource "aws_route_table_association" "public_route_1" {
   subnet_id      = aws_subnet.public_1.id
@@ -145,6 +145,8 @@ resource "aws_security_group" "public_sg" {
 
   }
 }
+
+##########################################################################
 resource "aws_security_group" "private_sg" {
   name        = "private-sg"
   description = "Allow web tier and ssh traffic"
@@ -180,6 +182,7 @@ resource "aws_lb" "project_alb" {
   subnets            = [aws_subnet.public_1.id, aws_subnet.public_2.id]
 }
 
+##########################################################################
 # Create ALB target group
 resource "aws_lb_target_group" "project_tg" {
   name     = "project-tg"
@@ -261,6 +264,8 @@ resource "aws_instance" "web2" {
     Name = "web2_instance"
   }
 }
+
+##########################################################################
 # Database subnet group
 resource "aws_db_subnet_group" "db_subnet"  {
     name       = "db-subnet"
