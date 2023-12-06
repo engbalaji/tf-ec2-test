@@ -20,10 +20,10 @@ variable "security_group2_id" {
   default = "sg-048baa2ebfebb7aae"
 }
 variable "instance1_name" {
-  default = "bmsspoc1"
+  default = "sspoc1"
 }
 variable "instance2_name" {
-  default = "bmsspoc2"
+  default = "sspoc2"
 }
 variable "my-key-pair" {
   default = "Balaji Mariyappan"
