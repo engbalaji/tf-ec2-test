@@ -12,11 +12,6 @@ data "aws_vpc" "vpc" {
     id = "var.vpc_id"
 }
 
-data "aws_subnet" "subnet1" {
-    // Configure the subnet here
-    id = "var.subnet1_id" 
-}
-
 ####################################
 # Create an AWS EC2 instance
 ####################################
@@ -27,7 +22,7 @@ resource "aws_instance" "web" {
     instance_type = "var.instance_type"
     key_name = "var.my-key-pair"
     vpc_security_group_ids = ["var.security_group1_id"]
-    subnet_id = var.aws_subnet.subnet1.id
+    subnet_id = var.subnet1_id
     tags = {
         Name = "terraform-example"
     }
