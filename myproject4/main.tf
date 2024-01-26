@@ -21,7 +21,6 @@ resource "aws_instance" "web" {
     key_name = var.my-key-pair
     vpc_security_group_ids = [var.security_group1_id]
     subnet_id = var.subnet1_id
-    availability_zone = var.AZ
     tags = {
         Name = "terraform-example"
     }
