@@ -6,10 +6,7 @@ provider "aws" {
 ####################################
 # VPC and subnets
 ####################################
-//data "aws_vpc" "vpc" {
-    // Configure the VPC here
-//    id = "var.vpc_id"
-//}
+
 ####################################
 # Create an AWS EC2 instance
 ####################################
