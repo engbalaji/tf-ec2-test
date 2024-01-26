@@ -33,7 +33,7 @@ resource "aws_instance" "web" {
 resource "aws_ebs_volume" "ebs_volume" {
     // Configure the EBS volume here
     availability_zone = "us-east-1a"
-    size = 33
+    size = 10
     type = "gp2"
     tags = {
         Name = "terraform-example"
