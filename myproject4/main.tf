@@ -46,7 +46,6 @@ resource "aws_volume_attachment" "ebs_attachment" {
     // Configure the EBS volume attachment here
     instance_id = aws_instance.web.id
     volume_id = aws_ebs_volume.ebs_volume.id
-    availability_zone = var.AZ
     device_name = "/dev/sdh"
 }
 
