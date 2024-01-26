@@ -19,7 +19,7 @@ resource "aws_instance" "web" {
     ami = var.ami_id
     instance_type = var.instance_type
     key_name = var.my-key-pair
-    vpc_security_group_ids = ["var.security_group1_id"]
+    vpc_security_group_ids = [var.security_group1_id]
     subnet_id = var.subnet1_id
     tags = {
         Name = "terraform-example"
