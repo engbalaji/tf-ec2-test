@@ -19,7 +19,7 @@ resource "aws_instance" "web" {
     vpc_security_group_ids = [var.security_group1_id]
     subnet_id = var.subnet1_id
     tags = {
-        Name = "terraform-example"
+        Name = var.instance1_name
     }
 }
 
@@ -46,3 +46,10 @@ resource "aws_volume_attachment" "ebs_attachment" {
 }
 
 ####################################
+# Installing apache web server
+####################################
+module "apache" {
+    source = "./modules/apache"
+
+    ec2_instance_id = module.ec2_instance.id
+}
