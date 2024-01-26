@@ -21,6 +21,7 @@ resource "aws_instance" "web" {
     key_name = var.my-key-pair
     vpc_security_group_ids = [var.security_group1_id]
     subnet_id = var.subnet1_id
+    availability_zone = var.AZ
     tags = {
         Name = "terraform-example"
     }
@@ -32,7 +33,7 @@ resource "aws_instance" "web" {
 
 resource "aws_ebs_volume" "ebs_volume" {
     // Configure the EBS volume here
-    availability_zone = "us-east-1a"
+    availability_zone = var.AZ
     size = 33
     encrypted = true
     type = "gp2"
@@ -45,6 +46,7 @@ resource "aws_volume_attachment" "ebs_attachment" {
     // Configure the EBS volume attachment here
     instance_id = aws_instance.web.id
     volume_id = aws_ebs_volume.ebs_volume.id
+    availability_zone = var.AZ
     device_name = "/dev/sdh"
 }
 

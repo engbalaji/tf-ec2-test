@@ -31,4 +31,7 @@ variable "my-key-pair" {
 variable "vpc_id" {
   default = "vpc-b30658d4"
 }
+variable "AZ" {
+  default = "us-east-1a"
+}
 
