@@ -48,8 +48,8 @@ resource "aws_volume_attachment" "ebs_attachment" {
 ####################################
 # Installing apache web server
 ####################################
-module "apache" {
-    source = "./modules/apache"
-
-    ec2_instance_id = module.ec2_instance.id
-}
+#module "apache" {
+#    source = "./modules/apache"
+#
+#    ec2_instance_id = module.ec2_instance.id
+#}
