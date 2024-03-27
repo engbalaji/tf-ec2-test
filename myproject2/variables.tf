@@ -14,10 +14,10 @@ variable "subnet2_id" {
   default = "subnet-0e0420f94c95acd22"
 }
 variable "security_group1_id" {
-  default = "sg-06bc9cdd724e815b1"
+  default = "sg-02cd5c886d8b07682"
 }
 variable "security_group2_id" {
-  default = "sg-048baa2ebfebb7aae"
+  default = "sg-02cd5c886d8b07682"
 }
 variable "instance1_name" {
   default = "sspoc1"
