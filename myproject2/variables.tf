@@ -5,13 +5,13 @@ variable "ami_id" {
   default = "ami-0df435f331839b2d6"
 }
 variable "instance_type" {
-  default = "t2.micro"
+  default = "t2.xlarge"
 }
 variable "subnet1_id" {
-  default = "subnet-0f1e42859f3ad43c3"
+  default = "subnet-89eb03a4"
 }
 variable "subnet2_id" {
-  default = "subnet-0e0420f94c95acd22"
+  default = "subnet-b64d14ff"
 }
 variable "security_group1_id" {
   default = "sg-02cd5c886d8b07682"
